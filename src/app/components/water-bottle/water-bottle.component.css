@@ -1,0 +1,213 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  color: #2196F3;
+  margin-bottom: 30px;
+}
+
+/* İstatistik Kartları */
+.stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* 3D Su Şişesi */
+.bottle-container {
+  perspective: 1000px;
+  margin: 40px 0;
+}
+
+.bottle {
+  width: 200px;
+  height: 500px;
+  margin: 0 auto;
+  background: linear-gradient(to right, 
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.1) 100%
+  );
+  border: 3px solid #2196F3;
+  border-radius: 30px 30px 15px 15px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 60px rgba(33, 150, 243, 0.3),
+    inset 0 0 50px rgba(255,255,255,0.1);
+  transform: rotateY(-5deg);
+  transition: transform 0.3s;
+}
+
+.bottle:hover {
+  transform: rotateY(5deg);
+}
+
+/* Su Animasyonu */
+.water {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, 
+    #00bcd4 0%,
+    #4dd0e1 50%,
+    #80deea 100%
+  );
+  transition: height 0.8s ease-in-out;
+  border-radius: 0 0 15px 15px;
+}
+
+.water-wave {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: radial-gradient(ellipse at center, 
+    rgba(255,255,255,0.3) 0%,
+    transparent 70%
+  );
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Şişe Ölçekleri */
+.bottle-marks {
+  position: absolute;
+  left: -60px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  pointer-events: none;
+}
+
+.mark {
+  color: #666;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Progress Bar */
+.progress-container {
+  margin: 30px 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 30px;
+  background: #e0e0e0;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00bcd4, #2196F3);
+  transition: width 0.8s ease-in-out;
+  border-radius: 15px;
+}
+
+.progress-text {
+  display: block;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2196F3;
+}
+
+/* Su İçtim Butonu */
+.drink-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+.drink-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+}
+
+.drink-button:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.drink-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button-icon {
+  font-size: 24px;
+}
+
+/* Başarı Mesajı */
+.success-message {
+  margin-top: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  animation: celebration 1s ease-in-out;
+}
+
+@keyframes celebration {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}

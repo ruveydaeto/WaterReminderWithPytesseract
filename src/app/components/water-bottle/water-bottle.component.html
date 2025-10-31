@@ -1,0 +1,55 @@
+<div class="container">
+  <h1>💧 Su İçme Hatırlatıcısı</h1>
+  
+  <!-- İstatistikler -->
+  <div class="stats">
+    <div class="stat-card">
+      <span class="stat-value">{{ waterAmount }}ml</span>
+      <span class="stat-label">İçilen Su</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">{{ remainingGlasses }}</span>
+      <span class="stat-label">Kalan Bardak</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value">{{ nextReminder | date:'HH:mm:ss' }}</span>
+      <span class="stat-label">Sonraki Hatırlatma</span>
+    </div>
+  </div>
+
+  <!-- 3D Su Şişesi -->
+  <div class="bottle-container">
+    <div class="bottle">
+      <!-- Su seviyesi -->
+      <div class="water" [style.height.%]="waterPercentage">
+        <div class="water-wave"></div>
+      </div>
+      
+      <!-- Şişe çizgileri (ölçek) -->
+      <div class="bottle-marks">
+        <div class="mark" *ngFor="let mark of [2000, 1600, 1200, 800, 400]">
+          <span>{{ mark }}ml</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="waterPercentage"></div>
+    </div>
+    <span class="progress-text">{{ waterPercentage.toFixed(0) }}% Tamamlandı</span>
+  </div>
+
+  <!-- Su İçtim Butonu -->
+  <button class="drink-button" (click)="onDrinkWater()" [disabled]="waterAmount >= 2000">
+    <span class="button-icon">💧</span>
+    <span class="button-text">Su İçtim (200ml)</span>
+  </button>
+
+  <!-- Başarı Mesajı -->
+  <div class="success-message" *ngIf="waterAmount >= 2000">
+    🎉 Tebrikler! Günlük hedefini tamamladın!
+  </div>
+</div>
